@@ -1,39 +1,185 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Flutter progressive time picker
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+A beautiful Flutter clock-style time picker inspired by Material Design.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+Users simply tap a button to open an analog clock dialog, select an hour, select a minute, and confirm their choice.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+The selected time is then displayed above the button.
 
-## Features
+---
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+# ✨ Features
 
-## Getting started
+- 🕐 Analog Clock Picker
+- ⏰ Hour Selection
+- ⏱ Minute Selection
+- 🌗 AM / PM Toggle
+- 📱 Dialog Based UI
+- 🎯 Simple API
+- 📳 Haptic Feedback
+- ⌚ Current Time Button
+- ✅ Select Button
+- ❌ Cancel Button
+- 🎨 Material Design Inspired
+- ⚡ Lightweight & Fast
+- 🔄 Controller Based Architecture
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+---
 
-## Usage
+### Demo 
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
 
-```dart
-const like = 'sample';
+
+https://github.com/user-attachments/assets/527daf0c-d4ef-4fb7-97a5-4003a15bfee5
+
+
+# 📦 Installation
+
+Add dependency to your `pubspec.yaml`
+
+```yaml
+dependencies:
+ flutter_progressive_time_picker:
+    path: ../
 ```
 
-## Additional information
+Run:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```bash
+flutter pub get
+```
+
+---
+
+# 🚀 Import
+
+```dart
+import 'package:flutter_progressive_time_picker/flutter_progressive_time_picker.dart';
+
+```
+
+---
+
+# 📱 Basic Usage
+
+```dart
+ ClockTimePicker(
+                buttonText: 'Pick Time',
+
+                initialTime: TimeOfDay.now(),
+
+                onTimeSelected: (time) {
+                  setState(() {
+                    selectedTime = time;
+                  });
+
+                  debugPrint(time.format(context));
+                },
+              ),
+```
+
+---
+
+# 📱 Complete Example
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_progressive_time_picker/flutter_progressive_time_picker.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
+      home: const HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  TimeOfDay? selectedTime;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Clock Time Picker')),
+
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+
+            children: [
+              ClockTimePicker(
+                buttonText: 'Pick Time',
+
+                initialTime: TimeOfDay.now(),
+
+                onTimeSelected: (time) {
+                  setState(() {
+                    selectedTime = time;
+                  });
+
+                  debugPrint(time.format(context));
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+```
+
+---
+
+
+
+# ⚙️ Parameters
+
+| Parameter | Type | Description |
+|------------|------|-------------|
+| buttonText | String | Button label |
+| initialTime | TimeOfDay | Initial selected time |
+| onTimeSelected | ValueChanged<TimeOfDay> | Returns selected time |
+
+---
+
+
+# 📄 License
+
+MIT License
+
+Copyright (c) 2026 Excelsior Technologies
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is furnished
+to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
