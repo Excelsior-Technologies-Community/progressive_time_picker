@@ -1,0 +1,4 @@
+enum ClockMode {
+  hour,
+  minute,
+}
